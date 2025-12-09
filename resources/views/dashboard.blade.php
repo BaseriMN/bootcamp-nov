@@ -206,7 +206,7 @@
             <form action="{{ route('expenses.destroy', $expense) }}" method="POST" class="delete-form">
                 @csrf
                 @method('DELETE')
-                <button class="delete-btn">Delete This</button>
+                <button class="delete-btn">Delete</button>
             </form>
             <a href = "{{ route('expenses.edit', $expense) }}" class="edit-btn">Edit</a>
 
