@@ -195,7 +195,7 @@
 
             <div class="expense-info">
                 <div><span>ID:</span> {{ $expense->id }}</div>
-                <div><span>Time:</span> {{ $expense->created_at->format('H:i:s') }}</div>
+                <div><span>Time:</span> {{ $expense->created_at->format('Y-m-d') }}</div>
                 <div><span>Title:</span> {{ $expense->title }}</div>
                 <div><span>Desc:</span> {{ $expense->description }}</div>
                 <div><span>RM:</span> {{ number_format($expense->amount, 2) }}</div>

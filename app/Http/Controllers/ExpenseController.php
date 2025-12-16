@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
@@ -12,7 +13,7 @@ class ExpenseController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'expenses' => Expense::All()
+            'expenses' => Auth::user()->expenses
         ]);
     }
 
@@ -51,7 +52,17 @@ class ExpenseController extends Controller
     // Create a new expense
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'amount' => 'required|string',
+            'category' => 'required',
+            'notes' => 'required',
+        ]);       
+        
+        
         Expense::create([
+            'user_id' => auth()->user()->id, //foreign id as user id
             'title' => $request->title, //'Lunch'
             'description' => $request->description, //makan
             'amount' => $request->amount, //12.50,

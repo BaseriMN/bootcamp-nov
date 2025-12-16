@@ -7,13 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
-    //use HasFactory;
+    use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'amount',
         'category',
         'notes',
     ];
+
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+
+
+
 }
